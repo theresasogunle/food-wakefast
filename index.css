@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+body {
+  font-size: 24px;
+  line-height: 1.25;
+  background-color: white;
+  color: black;
+  font-family: "Pacifico";
+  overscroll-behavior-y: none;
+}
+
+header {
+  background-color: #f2dd00;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+header img {
+  max-width: 265px;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+header nav a {
+  margin: 0 0 0 24px;
+  color: black;
+  text-decoration: none;
+  position: relative;
+  padding: 0 0 16px 0;
+}
+
+header nav a img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  clip-path: polygon(0 0, 0 100%, 0 100%, 0 0);
+  transition: clip-path 0.5s;
+}
+
+header nav a:hover img {
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+}
+
+section {
+  padding: 96px;
+}
+
+section.yellow {
+  background-color: #f2dd00;
+}
+
+section.salmon {
+  background-color: #f09291;
+}
+
+section.baby-blue {
+  background-color: #bee3f8;
+}
+
+h2 {
+  font-size: 96px;
+  text-align: center;
+  max-width: 10em;
+  margin: 0 auto;
+}
+
+figure {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+figcaption {
+  position: absolute;
+  top: 70%;
+  left: 100%;
+  width: 50%;
+  transform: translate(-50%, -50%);
+}
+
+figcaption::before {
+  content: "";
+  padding: 160% 0 0 0;
+  display: block;
+}
+
+section.salmon figcaption {
+  left: 0%;
+}
+
+figcaption img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s 0.5s;
+  max-width: 500px;
+  width: 100%;
+}
+
+figcaption.in-view img {
+  opacity: 1;
+  width: 300px;
+}
+
+figcaption img:nth-child(2) {
+  transition-delay: 1s;
+}
+
+figcaption img:nth-child(3) {
+  transition-delay: 1.5s;
+}
+
+div.cursor,
+div.cursor-outer {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 600px) {
+  body,
+  a,
+  a:hover {
+    cursor: none;
+  }
+
+  div.cursor {
+    position: absolute;
+    display: block;
+    top: 32px;
+    left: 32px;
+    width: 20px;
+    height: 20px;
+    background-image: url("./assets/cursor.svg");
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+
+  div.cursor-outer {
+    position: absolute;
+    display: block;
+    top: 32px;
+    left: 32px;
+    width: 100px;
+    height: 100px;
+    background-image: url("./assets/rotating-cursor.png");
+    background-size: 100px 100px;
+    pointer-events: none;
+    animation: rotate 20s infinite linear;
+  }
+}
